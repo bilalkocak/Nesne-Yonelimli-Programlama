@@ -1,39 +1,55 @@
-#include <iostream>
-#include <cstring>
+    #include <iostream>
 
-using namespace std;
+    using namespace std;
 
-class ComplexT{
-    double re,im;
-public:
-    ComplexT(double re_in=0, double im_in=1);
-    ComplexT operator+(ComplexT&);
-    void goster();
-};
+    class nokta{
+        int x,y,z;
 
-ComplexT ComplexT::operator+(ComplexT &c) {
-    double yeni_re,yeni_im;
-    yeni_re=re+c.re;
-    yeni_im=c.im;
-    return ComplexT(yeni_re,yeni_im);
-}
+    public:
+        nokta(int x=0,int y=0,int z=0);
+        void goster();
+        nokta operator+(nokta p);
+        nokta operator-(nokta p);
+    };
 
-void ComplexT::goster() {
-    cout<<endl<<"re="<<re<<"im="<<im;
+    void nokta::goster() {
+        cout<<"Xdegeri: "<<x<<"Ydegeri: "<<y<<"Zdegeri: "<<z<<endl;
+    }
 
-}
+    nokta::nokta(int x, int y, int z) {
+        this->x=x;
+        this->y=y;
+        this->z=z;
+    }
 
-ComplexT::ComplexT(double re_in, double im_in) {
-    re=re_in;
-    im=im_in;
-    cout<<endl<<"Varsayilan Constructor";
-}
+    nokta nokta::operator+(nokta p) {
+
+        int yeni_x,yeni_y,yeni_z;
+
+        yeni_x=x+p.x;
+        yeni_y=y+p.y;
+        yeni_z=z+p.z;
+
+        return nokta(yeni_x,yeni_y,yeni_z);
+    }
+
+    nokta nokta::operator-(nokta p) {
+        int yeni_x,yeni_y,yeni_z;
+
+        yeni_x=x-p.x;
+        yeni_y=y-p.y;
+        yeni_z=z-p.z;
+        return nokta(yeni_x,yeni_y,yeni_z);
+    }
 
 
-int main() {
+    int main() {
 
-    ComplexT z1(1,1),z2(2,2),z3;
-    z3=z1+z2; //z3=z1.operator+(z2);
-    z3.goster();
-    return 0;
-}
+        nokta a(1,2,3),b(2,3,5),c;
+        c=a+b;
+        c.goster();
+        nokta d(5,4,6),e(2,3,5),f;
+        f=d-e;
+        f.goster();
+        return 0;
+    }
