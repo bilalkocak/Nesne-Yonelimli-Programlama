@@ -11,7 +11,7 @@ int main(){
     intList.push_back(95);
     
 
-    for(i=0;intList.size();i++){
+    for(i=0;i<intList.size();i++){
         cout<<intList[i]<<" "<<endl;
     }
     
